@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday & Valentine's Day, Grace Valentine</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Cursive', Arial, sans-serif;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.6);
+        }
+
+        p {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .heart {
+            font-size: 40px;
+            animation: heartbeat 1s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-style: italic;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-block;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 1em;
+            font-family: 'Cursive', Arial, sans-serif;
+            color: #ff758c;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            color: #ff758c;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .modal button:hover {
+            background: #ff7eb3;
+        }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .floating-hearts span {
+            position: absolute;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Typing Effect */
+        .typing-effect {
+            margin-top: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .typing-effect p {
+            border-right: 2px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
+        }
+
+        /* Video Section */
+        .video-section {
+            margin-top: 30px;
+        }
+
+        .video-section video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .video-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .video-section video {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Confetti Animation -->
+    <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+    </div>
+
+    <!-- Music Player -->
+<audio id="song1">
+    <source src="song1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<audio id="song2">
+    <source src="song2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Content -->
+<div class="container">
+    <h1>Happy Birthday & Happy Valentine's Day, My Love Grace Valentine! ❤️</h1>
+    <p>You are the most beautiful gift in my life, and today is all about celebrating you! 💕</p>
+    <div class="heart">💖💘💝</div>
+
+    <!-- Interactive Buttons -->
+    <div class="buttons">
+        <button onclick="playSongs()">Play Our Songs</button>
+        <button onclick="showLove()">Show Me Love</button>
+        <button onclick="surpriseMe()">Surprise Me</button>
+        <button onclick="memoryLane()">Memory Lane</button>
+        <button onclick="sendLove()">Send Love</button>
+        <button onclick="specialMessage()">Special Message</button>
+    </div>
+</div>
+
+<!-- JavaScript to Handle Sequential Playback -->
+<script>
+    let song1 = document.getElementById("song1");
+    let song2 = document.getElementById("song2");
+
+    function playSongs() {
+        song1.play();
+    }
+
+    // When song1 ends, play song2
+    song1.addEventListener("ended", function() {
+        song2.play();
+    });
+
+    // When song2 ends, play song1 again (loop)
+    song2.addEventListener("ended", function() {
+        song1.play();
+    });
+
+    // Auto-start after user clicks anywhere
+    document.addEventListener('click', () => {
+        if (song1.paused && song2.paused) {
+            playSongs();
+        }
+    }, { once: true }); // Ensures it only triggers once
+</script>
+
+        <!-- Typing Effect -->
+        <div class="typing-effect">
+            <p>Grace, you are the most beautiful gift in my life. 💕</p>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <h2>Our Love Story</h2>
+            <!-- Add your video here -->
+            <video autoplay loop muted>
+                <source src="happy_birth.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video autoplay loop muted>
+                <source src="Orange Black Luxury Happy Birthday Video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video autoplay loop muted>
+                <source src="Pink Valentine's Day Video Instagram Reels.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <!-- Gallery -->
+        <div class="gallery">
+            <img src="picture2.jpg" alt="Memories with Grace">
+            <img src="walk.jpg" alt="Memories with Grace">
+            <img src="matt.jpg" alt="Memories with Grace">
+            <img src="cyber.jpg" alt="Memories with Grace">
+        </div>
+
+        <!-- Message -->
+        <div class="message">
+            "Grace, you light up my world in ways I never imagined. Every moment with you is a treasure. 
+            On this special day, I just want to say I love you more than words can express. 
+            Happy Birthday and Happy Valentine's Day, my queen! 💖"
+        </div>
+        <div class="footer">Forever yours, with love ❤️</div>
+    </div>
+
+    <!-- Modal -->
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="modal">
+        <p id="modalMessage"></p>
+        <button onclick="closeModal()">OK</button>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <script>
+        // Interactive Button Functions
+        function showLove() {
+            document.getElementById('modalMessage').textContent = "I love you more than words can express, Grace! 💖";
+            openModal();
+        }
+
+        function surpriseMe() {
+            const quotes = [
+                "You are my today and all of my tomorrows. 💕",
+                "Every moment with you is a treasure. 💖",
+                "You are the most beautiful gift in my life. 💘",
+                "I fall for you more every day. 💝"
+            ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('modalMessage').textContent = randomQuote;
+            openModal();
+        }
+
+        function memoryLane() {
+            alert("Opening Memory Lane... Replace this with a slideshow of your photos!");
+        }
+
+        function sendLove() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('span');
+                heart.innerHTML = '💖';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heartsContainer.appendChild(heart);
+            }
+            showMessage("Sending you all my love! 💖");
+        }
+
+        function specialMessage() {
+            document.getElementById('modalMessage').textContent = "Grace, you are my everything. Happy Birthday and Happy Valentine's Day, my queen! 💖";
+            openModal();
+        }
+
+        // Modal Functions
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        function showMessage(message) {
+            document.getElementById('modalMessage').textContent = message;
+            openModal();
+        }
+
+        // Confetti Animation Script
+        const confettiContainer = document.querySelector('.confetti');
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.animationDelay = `${Math.random() * 5}s`;
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confettiContainer.appendChild(confetti);
+        }
+
+        // Play Audio After 3 Seconds
+        setTimeout(() => {
+            const song = document.getElementById('romanticSong');
+            song.play();
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
+</body>
+</html>
